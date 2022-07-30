@@ -16,12 +16,12 @@ data class Home(
 ) : Parcelable{
 
     constructor(parcel: Parcel) : this(
-       parcel.createTypedArrayList(Banner)?: ArrayList(),
+        parcel.createTypedArrayList(Banner)?: ArrayList(),
         parcel.readParcelable(BestSeller::class.java.classLoader) ?: BestSeller(),
         parcel.createTypedArrayList(ShopByBrand)?: ArrayList(),
     )
 
-  constructor() : this(arrayListOf(),BestSeller(), arrayListOf())
+    constructor() : this(arrayListOf(),BestSeller(), arrayListOf())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeTypedList(bannerArrayList)

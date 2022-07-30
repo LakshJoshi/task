@@ -42,4 +42,5 @@ data class Banner(
             return arrayOfNulls(size)
         }
     }
+
 }

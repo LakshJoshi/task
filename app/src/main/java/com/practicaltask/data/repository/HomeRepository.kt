@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken
 import com.practicaltask.data.enum.APIErrorCode
 import com.practicaltask.data.enum.HTTPCode
 import com.practicaltask.R
-import com.practicaltask.data.entity.APIResponse
 import com.practicaltask.data.entity.APIResult
 import com.practicaltask.data.entity.banner.Banner
 import com.practicaltask.data.entity.home.Home
@@ -22,7 +21,7 @@ class HomeRepository(val context: Context) {
 
 
     suspend fun getHomeData(
-        listener: (APIResult<String>) -> Unit
+        listener: (APIResult<Home>) -> Unit
     ) {
         if (Helper.isNetworkAvailable(context)) {
             listener.invoke(APIResult.InProgress)
@@ -36,17 +35,18 @@ class HomeRepository(val context: Context) {
                 val response = api.getHomeData(jsonObj)
                 if (response.isSuccessful) {
                     Log.d("Response", Gson().toJson(response.body()))
-                    response.body()?.asJsonObject?.let { jsonObject ->
-                        val apiResponse: APIResponse = Gson().fromJson(jsonObject, object : TypeToken<APIResponse>() {}.type)
-                        Log.d("APIRes", Gson().toJson(apiResponse))
+                    response.body()?.asJsonArray?.let { jsonArray ->
+                        // val apiResponse: APIResponse = Gson().fromJson(jsonArray, object : TypeToken<APIResponse>() {}.type)
+                        //  Log.d("APIRes", Gson().toJson(apiResponse))
                         when (response.code()) {
                             HTTPCode.SUCCESS.code, HTTPCode.SUCCESS_1.code -> {
                                 var home = Home()
-                                if (jsonObject.has("data") && !jsonObject.get("data").isJsonNull){
-                                    val bannerList : ArrayList<Banner> = Gson().fromJson(jsonObject.get("data").asJsonObject.get("banner_slider").asJsonArray, object : TypeToken<ArrayList<Banner>>() {}.type)
+                                var homeBannerList : ArrayList<Banner> = arrayListOf()
+                                for (i in 0 until jsonArray.size()) {
+                                    home = Gson().fromJson(jsonArray[0].asJsonObject.asJsonObject.get("data"), object : TypeToken<Home>() {}.type)
                                 }
 
-                                listener.invoke(APIResult.Success("", apiResponse.message))
+                                listener.invoke(APIResult.Success(home, ""))
                                 return
                             }
                             else -> {
