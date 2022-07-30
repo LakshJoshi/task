@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PracticalTask</string>
+    <string name="please_wait">Please wait...</string>
+    <!--- Error Messages -->
+    <string name="network_error_msg">No internet connection.</string>
+    <string name="error_msg">Something went wrong. Please try again later.</string>
+</resources>

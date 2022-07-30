@@ -1,0 +1,22 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Common Margin -->
+    <dimen name="mini_margin">2dp</dimen>
+    <dimen name="tiny_margin">4dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="normal_margin">16dp</dimen>
+    <dimen name="large_margin">24dp</dimen>
+    <dimen name="seventy_margin">70dp</dimen>
+    <dimen name="margin_six">7dp</dimen>
+
+
+    <dimen name="size_menu">28dp</dimen>
+    <dimen name="dot_indicator_radius">8dp</dimen>
+    <dimen name="dot_size">12dp</dimen>
+    <dimen name="dot_space">4dp</dimen>
+    <dimen name="dot_width">2dp</dimen>
+    <dimen name="view_line_height">0.5dp</dimen>
+</resources>
