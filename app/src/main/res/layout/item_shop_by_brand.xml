@@ -9,6 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_marginVertical="@dimen/small_margin"
+        android:layout_marginHorizontal="@dimen/small_margin"
         android:background="@drawable/bg_brand_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

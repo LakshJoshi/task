@@ -12,21 +12,25 @@ data class Home(
     @SerializedName("best_seller")
     var bestSeller : BestSeller,
     @SerializedName("shop_by_brand")
-    var shopByBrandList: ArrayList<ShopByBrand>
+    var shopByBrandList: ArrayList<ShopByBrand>,
+    @SerializedName("top_menu")
+    var topCategoryArrayList: ArrayList<Category>
 ) : Parcelable{
 
     constructor(parcel: Parcel) : this(
         parcel.createTypedArrayList(Banner)?: ArrayList(),
         parcel.readParcelable(BestSeller::class.java.classLoader) ?: BestSeller(),
         parcel.createTypedArrayList(ShopByBrand)?: ArrayList(),
+        parcel.createTypedArrayList(Category)?: ArrayList(),
     )
 
-    constructor() : this(arrayListOf(),BestSeller(), arrayListOf())
+    constructor() : this(arrayListOf(),BestSeller(), arrayListOf(), arrayListOf())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeTypedList(bannerArrayList)
         parcel.writeParcelable(bestSeller, flags)
         parcel.writeTypedList(shopByBrandList)
+        parcel.writeTypedList(topCategoryArrayList)
     }
 
     override fun describeContents(): Int {
