@@ -1,4 +1,4 @@
-package com.moneyme2.data.enum
+package com.practicaltask.data.enum
 
 enum class HTTPCode(val code: Int) {
     SUCCESS(200),

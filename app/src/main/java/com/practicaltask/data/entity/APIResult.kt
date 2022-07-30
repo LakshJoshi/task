@@ -1,6 +1,6 @@
 package com.practicaltask.data.entity
 
-import com.moneyme2.data.enum.APIErrorCode
+import com.practicaltask.data.enum.APIErrorCode
 
 
 sealed class APIResult<out T : Any> {

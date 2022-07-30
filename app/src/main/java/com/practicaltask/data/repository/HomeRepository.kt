@@ -3,15 +3,17 @@ package com.practicaltask.data.repository
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import com.moneyme2.data.enum.APIErrorCode
-import com.moneyme2.data.enum.HTTPCode
+import com.practicaltask.data.enum.APIErrorCode
+import com.practicaltask.data.enum.HTTPCode
 import com.practicaltask.R
 import com.practicaltask.data.entity.APIResponse
 import com.practicaltask.data.entity.APIResult
+import com.practicaltask.data.entity.banner.Banner
+import com.practicaltask.data.entity.home.Home
 import com.practicaltask.data.remote.APIManager
 import com.practicaltask.util.helper.Helper
-import org.json.JSONObject
 
 
 class HomeRepository(val context: Context) {
@@ -26,8 +28,8 @@ class HomeRepository(val context: Context) {
             listener.invoke(APIResult.InProgress)
 
 
-            val jsonObj = JSONObject()
-            jsonObj.put("customer_id","")
+            val jsonObj = JsonObject()
+            jsonObj.addProperty("customer_id","")
 
             Log.d("params", Gson().toJson(jsonObj))
             try {
@@ -39,6 +41,11 @@ class HomeRepository(val context: Context) {
                         Log.d("APIRes", Gson().toJson(apiResponse))
                         when (response.code()) {
                             HTTPCode.SUCCESS.code, HTTPCode.SUCCESS_1.code -> {
+                                var home = Home()
+                                if (jsonObject.has("data") && !jsonObject.get("data").isJsonNull){
+                                    val bannerList : ArrayList<Banner> = Gson().fromJson(jsonObject.get("data").asJsonObject.get("banner_slider").asJsonArray, object : TypeToken<ArrayList<Banner>>() {}.type)
+                                }
+
                                 listener.invoke(APIResult.Success("", apiResponse.message))
                                 return
                             }

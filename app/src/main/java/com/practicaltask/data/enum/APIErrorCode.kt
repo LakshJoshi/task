@@ -1,4 +1,4 @@
-package com.moneyme2.data.enum
+package com.practicaltask.data.enum
 
 enum class APIErrorCode {
     NETWORK_ERROR,INVALID_DATA,NO_RESPONSE

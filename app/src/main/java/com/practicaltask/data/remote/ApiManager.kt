@@ -3,6 +3,7 @@ package com.practicaltask.data.remote
 import android.content.Context
 import android.util.Log
 import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.practicaltask.util.constant.AppURL
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -14,9 +15,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
+
 interface APIManager {
 
     companion object {
+
         private const val API_KEY = ""
 
         private fun getOkHttpClient(context: Context): OkHttpClient {
@@ -71,6 +74,6 @@ interface APIManager {
 
 
     @POST(AppURL.API.HOME_API)
-    suspend fun getHomeData(@Body params: JSONObject): Response<JsonElement>
+    suspend fun getHomeData(@Body params: JsonObject): Response<JsonElement>
 
 }

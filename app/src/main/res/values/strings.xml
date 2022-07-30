@@ -4,4 +4,8 @@
     <!--- Error Messages -->
     <string name="network_error_msg">No internet connection.</string>
     <string name="error_msg">Something went wrong. Please try again later.</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="see_all">See all</string>
+    <string name="see_more_categories">See more categories</string>
+    <string name="shop_by_brand">Shop by Brands</string>
 </resources>
